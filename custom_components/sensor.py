@@ -19,7 +19,7 @@ _LOGGER = logging.getLogger(__name__)
 
 DEFAULT_NAME = 'Espn_premier_league'
 UPDATE_FREQUENCY = timedelta(seconds=1)
-league ='eng.1'
+
 
 def setup_platform(
     hass,
