@@ -35,7 +35,7 @@ def setup_platform(
 class LivePremierLeagueSensor(entity.Entity):
     """Representation of a Espn sensor."""
 
-    def __init__(self,get_espn):
+    def __init__(self):
         """Initialize a new Espn sensor."""
         self._attr_name = " Live Premier League"
         self.event = None
