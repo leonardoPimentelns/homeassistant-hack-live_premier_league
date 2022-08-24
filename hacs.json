@@ -1,8 +1,8 @@
 {
 
-  "name": "Live Espn Premier league",
-  "homeassistant": "2022.7.13",
-  "domains": ["sensor"], 
-  "render_readme": true
+  "name": "Live Premier League",
+  "country": "BR",
+  "render_readme": true,
+  "domains": ["sensor"]
 
 }
