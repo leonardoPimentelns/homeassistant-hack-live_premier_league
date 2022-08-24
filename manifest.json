@@ -1,0 +1,10 @@
+{
+  "domain": "live_premier_league",
+  "name": "Live  Premier League",
+  "version": "1.0.3", 
+  "documentation": "",
+  "zeroconf": [],
+  "homekit": {},
+  "dependencies": [],
+  "codeowners": []
+}
