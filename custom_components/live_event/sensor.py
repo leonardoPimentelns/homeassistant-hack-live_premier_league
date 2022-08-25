@@ -5,6 +5,7 @@ from __future__ import annotations
 
 from datetime import timedelta,datetime
 import logging
+from multiprocessing import Event
 import voluptuous
 import json
 from requests.structures import CaseInsensitiveDict
@@ -39,7 +40,7 @@ class LivePremierLeagueSensor(entity.Entity):
     def __init__(self):
         """Initialize a new Espn sensor."""
         self._attr_name = " Live Premier League"
-        self.event = []
+        self.live_event = None
        
 
 
@@ -54,7 +55,7 @@ class LivePremierLeagueSensor(entity.Entity):
         """Fetch new state data for the sensor.
         This is the only method that should fetch new data for Home Assistant.
         """
-        
+        event=[]
     
         url = "https://star.content.edge.bamgrid.com/svc/content/CuratedSet/version/5.1/region/BR/audience/k-false,l-true/maturity/1850/language/en/setId/633fde36-78f6-4183-a304-99647a13eb51/pageSize/15/page/1"
 
@@ -85,10 +86,11 @@ class LivePremierLeagueSensor(entity.Entity):
                 startDate = new_date
 
                 data = {"event":{"name": name,"encodedFamilyId":'https://www.starplus.com/live-event/'+encodedFamilyId,"poster": poster,"startDate":startDate}}
-                self.event.append(data)
-                self.event.sort(key = lambda x:(x['event']["startDate"],x['event']["name"]))
+                event.append(data)
+                event.sort(key = lambda x:(x['event']["startDate"],x['event']["name"]))
+                self.live_event = event
 
-        self.matches = self.espn.get_matches(league)
+        self.matches = ""
         
             
 
@@ -97,7 +99,7 @@ class LivePremierLeagueSensor(entity.Entity):
     def extra_state_attributes(self):
         """Return device specific state attributes."""
         self._attributes = {
-            "Live_events": self.live,
+            "Live_events": self.live_event,
 
         }
         return  self._attributes
