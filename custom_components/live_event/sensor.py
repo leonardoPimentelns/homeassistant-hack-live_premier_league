@@ -57,7 +57,7 @@ class LivePremierLeagueSensor(entity.Entity):
         """
         event=[]
     
-        url = "https://star.content.edge.bamgrid.com/svc/content/CuratedSet/version/5.1/region/BR/audience/k-false,l-true/maturity/1850/language/en/setId/633fde36-78f6-4183-a304-99647a13eb51/pageSize/15/page/1"
+        url = "https://star.content.edge.bamgrid.com/svc/content/CuratedSet/version/5.1/region/BR/audience/k-false,l-true/maturity/1850/language/en/setId/9b5397d8-d4fc-4d63-bacf-58295ef465ff/pageSize/15/page/1"
 
         headers = CaseInsensitiveDict()
         headers["Accept"] = "application/json"
@@ -77,6 +77,7 @@ class LivePremierLeagueSensor(entity.Entity):
             
             if matches_today == "2022-08-27" :  
 
+                league =items['league']['text']['name']['full']['league']['default']['content']
                 name = items['text']['title']['full']['program']['default']['content']
                 encodedFamilyId =items['family']['encodedFamilyId']
                 poster = items['image']['tile']['1.78']['program']['default']['url']
@@ -85,7 +86,7 @@ class LivePremierLeagueSensor(entity.Entity):
                 new_date = date.astimezone(pytz.timezone('America/Sao_Paulo')).strftime('%Y-%m-%d %H:%M')
                 startDate = new_date
 
-                data = {"event":{"name": name,"encodedFamilyId":'https://www.starplus.com/live-event/'+encodedFamilyId,"poster": poster,"startDate":startDate}}
+                data = {"event":{"league": league,"name": name,"encodedFamilyId":'https://www.starplus.com/live-event/'+encodedFamilyId,"poster": poster,"startDate":startDate}}
                 event.append(data)
                 event.sort(key = lambda x:(x['event']["startDate"],x['event']["name"]))
                 self.live_event = event
