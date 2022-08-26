@@ -87,7 +87,7 @@ class MatchDaySensor(entity.Entity):
             matches_today = datetime.fromisoformat(matches_today).strftime('%Y-%m-%d')
             
             if matches_today == "2022-08-27" :  
-
+                event_state = items['eventState']
                 league =items['league']['text']['name']['full']['league']['default']['content']
                 name = items['text']['title']['full']['program']['default']['content']
                 encodedFamilyId =items['family']['encodedFamilyId']
@@ -98,7 +98,7 @@ class MatchDaySensor(entity.Entity):
                 start_time = date.astimezone(pytz.timezone('America/Sao_Paulo')).strftime('%H:%M')
             
 
-                data = {"event":{"league": league,"name": name,"encodedFamilyId":'https://www.starplus.com/live-event/'+encodedFamilyId,"poster": poster,"start_date":start_date,"start_time":start_time}}
+                data = {"event":{"event_state":event_state,"league": league,"name": name,"encodedFamilyId":'https://www.starplus.com/live-event/'+encodedFamilyId,"poster": poster,"start_date":start_date,"start_time":start_time}}
                 event.append(data)
                 event.sort(key = lambda x:(x['event']["start_date"],x['event']["name"]))
                 self.live_event = event
