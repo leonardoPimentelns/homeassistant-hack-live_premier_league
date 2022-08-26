@@ -100,7 +100,7 @@ class MatchDaySensor(entity.Entity):
 
                 data = {"event":{"event_state":event_state,"league": league,"name": name,"encodedFamilyId":'https://www.starplus.com/live-event/'+encodedFamilyId,"poster": poster,"start_date":start_date,"start_time":start_time}}
                 event.append(data)
-                event.sort(key = lambda x:(x['event']["start_date"],x['event']["name"]))
+                event.sort(key = lambda x:(x['event']["start_time"],x['event']["name"]))
                 self.live_event = event
 
         self.matches = ""
