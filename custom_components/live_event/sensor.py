@@ -98,7 +98,7 @@ class MatchDaySensor(entity.Entity):
                 start_time = date.astimezone(pytz.timezone('America/Sao_Paulo')).strftime('%H:%M')
             
 
-                data = {"event":{"league": league,"name": name,"encodedFamilyId":'https://www.starplus.com/live-event/'+encodedFamilyId,"poster": poster,"start_date":start_date,"StartTime":start_time}}
+                data = {"event":{"league": league,"name": name,"encodedFamilyId":'https://www.starplus.com/live-event/'+encodedFamilyId,"poster": poster,"start_date":start_date,"start_time":start_time}}
                 event.append(data)
                 event.sort(key = lambda x:(x['event']["start_date"],x['event']["name"]))
                 self.live_event = event
