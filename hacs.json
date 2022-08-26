@@ -1,6 +1,6 @@
 {
 
-  "name": "Live Premier League",
+  "name": "Match Day",
   "country": "BR",
   "render_readme": true,
   "domains": ["sensor"]

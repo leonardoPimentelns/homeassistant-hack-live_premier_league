@@ -1,6 +1,6 @@
 {
-  "domain": "live_premier_league",
-  "name": "Live  Premier League",
+  "domain": "MatchDay",
+  "name": "Match Day",
   "version": "1.0.3", 
   "documentation": "",
   "zeroconf": [],

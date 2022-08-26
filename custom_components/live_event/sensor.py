@@ -20,7 +20,7 @@ from homeassistant.helpers import config_validation
 _LOGGER = logging.getLogger(__name__)
 
 
-DEFAULT_NAME = 'Espn_premier_league'
+DEFAULT_NAME = 'MatchDay'
 UPDATE_FREQUENCY = timedelta(minutes=10)
 
 TOKEN ="your token"
@@ -41,15 +41,15 @@ def setup_platform(
 ):
     """Set up the Espn sensors."""
   
-    add_entities([LivePremierLeagueSensor(config)],True)
+    add_entities([MatchDaySensor(config)],True)
 
 
-class LivePremierLeagueSensor(entity.Entity):
+class MatchDaySensor(entity.Entity):
     """Representation of a Espn sensor."""
 
     def __init__(self,config):
         """Initialize a new Espn sensor."""
-        self._attr_name = " Live Premier League"
+        self._attr_name = "MatchDay"
         self.live_event = None
         self.config = config
        
