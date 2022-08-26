@@ -86,7 +86,7 @@ class MatchDaySensor(entity.Entity):
             matches_today = items['startDate'].replace('Z', '+00:00')
             matches_today = datetime.fromisoformat(matches_today).strftime('%Y-%m-%d')
             
-            if matches_today == "2022-08-27" :  
+            if matches_today == today :  
                 event_state = items['eventState']
                 league =items['league']['text']['name']['full']['league']['default']['content']
                 name = items['text']['title']['full']['program']['default']['content']
