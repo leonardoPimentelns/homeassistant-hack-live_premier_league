@@ -94,12 +94,13 @@ class LivePremierLeagueSensor(entity.Entity):
                 poster = items['image']['tile']['1.78']['program']['default']['url']
                 date_z =items['startDate'].replace('Z', '+00:00') 
                 date = datetime.fromisoformat(date_z)
-                new_date = date.astimezone(pytz.timezone('America/Sao_Paulo')).strftime('%Y-%m-%d %H:%M')
-                startDate = new_date
+                start_date = date.astimezone(pytz.timezone('America/Sao_Paulo')).strftime('%m/%d')
+                start_time = date.astimezone(pytz.timezone('America/Sao_Paulo')).strftime('%H:%M')
+            
 
-                data = {"event":{"league": league,"name": name,"encodedFamilyId":'https://www.starplus.com/live-event/'+encodedFamilyId,"poster": poster,"startDate":startDate}}
+                data = {"event":{"league": league,"name": name,"encodedFamilyId":'https://www.starplus.com/live-event/'+encodedFamilyId,"poster": poster,"start_date":start_date,"StartTime":start_time}}
                 event.append(data)
-                event.sort(key = lambda x:(x['event']["startDate"],x['event']["name"]))
+                event.sort(key = lambda x:(x['event']["start_date"],x['event']["name"]))
                 self.live_event = event
 
         self.matches = ""
